@@ -14,6 +14,7 @@ default['RServe']['configuration'] = [
 ]
 
 default['RServe']['accounts'] = {
-	"testuser" => "testpass"
+	"testuser" => "testpass",
+	"testuser1" => "testpass1"
 }
 

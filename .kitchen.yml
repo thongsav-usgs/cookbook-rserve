@@ -1,0 +1,38 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: centos-6.6-vbox
+    driver:
+      box: chef/centos-6.6
+      box_url: chef/centos-6.6
+      provider: virtualbox
+  - name: centos-6.6-vmware
+    driver:
+      box: chef/centos-6.6
+      box_url: chef/centos-6.6
+      provider: vmware_fusion
+  - name:  ubuntu-trusty-vbox
+    driver:
+      box: ubuntu/trusty64
+      box_url: ubuntu/trusty64
+      provider: virtualbox
+
+suites:
+  - name: default
+    run_list:
+      - recipe[RServe::default]
+    attributes:
+  - name: default-centos-vmware
+    driver:
+      customize:
+        memory: 1024
+    run_list:
+      - recipe[RServe::default]
+    excludes:
+      - centos-6.6-vbox
+      - ubuntu-trusty-vbox

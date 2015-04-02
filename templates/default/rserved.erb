@@ -1,0 +1,43 @@
+#!/bin/sh
+#
+# chkconfig: 2345 20 80
+# description: rserved startup script
+#
+RSERVE=/usr/lib64/R/bin/Rserv.sh
+. /etc/rc.d/init.d/functions
+test -f /etc/Rserv.conf
+export R_HOME=/usr/lib64/R
+RETVAL=0
+case "$1" in
+ start)
+   echo -n "Starting Rserve: "
+   [ -f $RSERVE ] || exit 1
+   if [ "$USER" != "<%= @user %>" ];
+    then /bin/su <%= @user %> $RSERVE
+    else $RSERVE
+   fi
+   RETVAL=$?
+   echo 
+   [ $RETVAL -eq 0 ] && touch /var/lock/subsys/rserved
+     ;;
+ stop)
+   echo -n "Shutting down RServe: "
+   pkill Rserve
+   RETVAL=$?
+   echo
+   [ $RETVAL -eq 0 ] && rm -f /var/lock/subsys/rserved
+     ;;
+ restart|reload)
+   $0 stop
+   $0 start
+   RETVAL=$?
+     ;;
+ status)
+   status Rserve
+   RETVAL=$?
+     ;;
+ *)
+   echo "Usage: $0 {start|stop|restart|status}"
+   exit 1
+esac
+exit $RETVAL

@@ -12,3 +12,8 @@ default['RServe']['configuration'] = [
 	"plaintext enable",
 	"pwdfile /home/rserver/pwdfile"
 ]
+
+default['RServe']['accounts'] = {
+	"testuser" => "testpass"
+}
+

@@ -43,8 +43,3 @@ template '/etc/init.d/rserved' do
 		:user => user_name
 	)
 end
-
-# Start at boot
-service "rserved" do
-	action [:enable, :start]
-end

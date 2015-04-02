@@ -25,6 +25,7 @@ platforms:
 suites:
   - name: default
     run_list:
+      - recipe[iptables::default]
       - recipe[RServe::default]
     attributes:
   - name: default-centos-vmware
@@ -32,6 +33,7 @@ suites:
       customize:
         memory: 1024
     run_list:
+      - recipe[iptables::default]
       - recipe[RServe::default]
     excludes:
       - centos-6.6-vbox

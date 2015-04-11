@@ -26,11 +26,14 @@ template "/etc/RServ.conf" do
 end
 
 # Create the executable script
-cookbook_file '/usr/lib64/R/bin/Rserv.sh' do
-	source 'Rserv.sh'
+template '/usr/lib64/R/bin/Rserv.sh' do
+	source 'RServ.sh.erb'
 	owner user_name
 	group group_name
 	mode '0550'
+	variables(
+		:rserv_startup_option => node['RServe']['startup_options']
+	)
 end
 
 # Create the system service

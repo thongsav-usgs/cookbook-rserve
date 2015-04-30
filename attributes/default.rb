@@ -7,12 +7,12 @@ default['RServe']['group_name'] = "rserver"
 default['RServe']['user_name'] = "rserver"
 
 default['RServe']['configuration'] = [
-	"workdir /tmp",
+	"workdir  /tmp",
 	"remote enable",
 	"fileio enable",
 	"auth required",
-	"plaintext enable",
-	"pwdfile /home/rserver/pwdfile"
+	"plaintext  enable",
+	"pwdfile  /home/rserver/pwdfile"
 ]
 
 default['RServe']['accounts'] = {

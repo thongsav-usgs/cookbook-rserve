@@ -6,4 +6,3 @@
 # Description: Installs the R 
 
 package 'R'
-

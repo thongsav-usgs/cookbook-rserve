@@ -15,9 +15,15 @@ user user_name do
 	gid group_name
 end
 
+file "/var/log/rserve.log" do
+	owner user_name
+	group group_name
+  action :create_if_missing
+end
+
 # Create the configuration file
-template "/etc/RServ.conf" do
-	source "RServ.conf.erb"
+template "/etc/Rserv.conf" do
+	source "Rserv.conf.erb"
 	owner user_name
 	group group_name
 	variables(

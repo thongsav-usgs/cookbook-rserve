@@ -38,3 +38,13 @@ suites:
     excludes:
       - centos-6.6-vbox
       - ubuntu-trusty-vbox
+  - name: default-centos-vbox
+    driver:
+      customize:
+        memory: 1024
+    run_list:
+      - recipe[iptables::default]
+      - recipe[RServe::default]
+    excludes:
+      - ubuntu-trusty-vbox
+      - centos-6.6-vmware

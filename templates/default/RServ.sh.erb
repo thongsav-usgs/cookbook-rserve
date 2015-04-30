@@ -1,2 +1,5 @@
 #!/bin/bash
-/usr/lib64/R/bin/R CMD Rserve <%= @rserv_startup_option %>
+
+date >> /var/log/rserve.log
+
+/usr/lib64/R/bin/R CMD Rserve <%= @rserv_startup_option %>  >>  /var/log/rserve.log 2>&1

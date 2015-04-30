@@ -16,5 +16,3 @@ include_recipe 'RServe::create_rserve_service'
 include_recipe 'RServe::create_credentials'
 
 include_recipe 'RServe::rserved_service'
-
-include_recipe 'RServe::open_rserver_port'
